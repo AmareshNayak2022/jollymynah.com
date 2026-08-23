@@ -1,0 +1,11 @@
+# IDE
+.idea/
+
+# local backups
+*.bak
+index.original.html
+
+# OS cruft
+Thumbs.db
+desktop.ini
+.DS_Store

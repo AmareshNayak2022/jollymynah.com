@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amaresh Nayak — Jollymynah</title>
+<meta name="description" content="Amaresh Nayak — software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK. Stories, mentoring, sculpture, music, and questions worth asking.">
+<link rel="icon" href="assets/painting.jpg">
+<link rel="apple-touch-icon" href="assets/painting.jpg">
+<meta name="theme-color" content="#2a0b3d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ---- purple / magenta theme ---- */
+    --deep:#1b0726;
+    --deep-2:#2a0b3d;
+    --plum:#4c1266;
+    --violet:#a855f7;
+    --violet-lite:#c084fc;
+    --pink:#ec4899;
+    --pink-lite:#f472b6;
+    --gold:#fbbf24;
+    --sky:#38bdf8;
+    --leaf:#34d399;
+
+    --text:#f7f2fb;
+    --muted: rgba(240,230,250,0.70);
+    --muted-soft: rgba(240,230,250,0.55);
+
+    --line: rgba(255,255,255,0.10);
+    --line-strong: rgba(255,255,255,0.18);
+    --panel: rgba(255,255,255,0.045);
+    --panel-hi: rgba(255,255,255,0.08);
+
+    --grad-text: linear-gradient(96deg, var(--violet) 0%, #d946ef 45%, var(--pink) 100%);
+    --grad-btn: linear-gradient(96deg, #7c3aed 0%, #c026d3 55%, var(--pink) 100%);
+    --grad-btn-2: linear-gradient(96deg, #d946ef 0%, var(--pink) 60%, #fb7185 100%);
+
+    /* specular sheen layered over glass panels */
+    --gloss:    linear-gradient(180deg, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.022) 42%, rgba(255,255,255,0) 72%);
+    --gloss-hi: linear-gradient(180deg, rgba(255,255,255,0.125) 0%, rgba(255,255,255,0.042) 42%, rgba(255,255,255,0) 72%);
+    --edge: inset 0 1px 0 rgba(255,255,255,0.14);
+    --edge-hi: inset 0 1px 0 rgba(255,255,255,0.22);
+
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+    --sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: var(--sans);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:88px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--deep);
+    color:var(--text);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  /* the purple field the whole page floats on */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+      radial-gradient(115% 85% at 76% 6%, rgba(168,85,247,0.55) 0%, rgba(126,34,206,0.28) 38%, rgba(0,0,0,0) 72%),
+      radial-gradient(95% 80% at 6% 96%, rgba(217,70,239,0.26) 0%, rgba(0,0,0,0) 62%),
+      linear-gradient(158deg, #2a0b3d 0%, #4c1266 46%, #1b0726 100%);
+  }
+
+  html{ scrollbar-color: rgba(168,85,247,0.55) rgba(27,7,38,0.6); scrollbar-width: thin; }
+  ::-webkit-scrollbar{ width:11px; height:11px; }
+  ::-webkit-scrollbar-track{ background:rgba(27,7,38,0.6); }
+  ::-webkit-scrollbar-thumb{
+    background:linear-gradient(180deg, var(--violet), var(--pink));
+    border-radius:999px;
+    border:3px solid rgba(27,7,38,0.9);
+  }
+  ::-webkit-scrollbar-thumb:hover{ background:linear-gradient(180deg, var(--violet-lite), var(--pink-lite)); }
+
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  ::selection{ background:rgba(236,72,153,0.35); color:#fff; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-inline: clamp(20px, 5vw, 64px);
+  }
+
+  /* ---------- PILL EYEBROW ---------- */
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    margin:0;
+    padding:8px 18px;
+    border-radius:999px;
+    background: rgba(24,6,36,0.45);
+    border:1px solid var(--line-strong);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    font-family:var(--sans);
+    font-size:0.76rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    color:var(--pink-lite);
+  }
+  .eyebrow::before{
+    content:"\2726";
+    font-size:0.85rem;
+    line-height:1;
+    color:var(--gold);
+  }
+
+  .flag{
+    display:block;
+    flex:none;
+    height:1.15em;
+    width:auto;
+    border-radius:2px;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.28);
+  }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:600;
+    letter-spacing:-0.015em;
+    text-wrap:balance;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn-row{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 30px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    color:#fff;
+    background:var(--grad-btn);
+    box-shadow: var(--edge-hi), 0 14px 34px -14px rgba(192,38,211,0.9);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .btn.alt{ background:var(--grad-btn-2); box-shadow: var(--edge-hi), 0 14px 34px -14px rgba(236,72,153,0.9); }
+  .btn:hover, .btn:focus-visible{
+    transform:translateY(-2px);
+    filter:brightness(1.07);
+    box-shadow: var(--edge-hi), 0 20px 44px -14px rgba(236,72,153,0.95);
+  }
+  .btn:focus-visible{ outline:2px solid var(--pink-lite); outline-offset:4px; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0) 62%),
+      rgba(27,7,38,0.72);
+    -webkit-backdrop-filter: blur(18px) saturate(1.45);
+    backdrop-filter: blur(18px) saturate(1.45);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 1px 0 rgba(255,255,255,0.05), 0 18px 40px -30px rgba(0,0,0,0.9);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:14px;
+  }
+  .nav-mark{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--sans);
+    font-size:0.82rem;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    color:var(--text);
+  }
+  .nav-mark .logo{
+    width:36px; height:36px;
+    border-radius:50%;
+    object-fit:cover;
+    flex:none;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.28), 0 0 18px -2px rgba(236,72,153,0.75);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .nav-mark:hover .logo{
+    transform:rotate(12deg) scale(1.06);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.4), 0 0 26px -2px rgba(236,72,153,0.95);
+  }
+  .nav-links{
+    display:flex; gap:clamp(14px, 2vw, 28px);
+    list-style:none; margin:0; padding:0;
+    font-family:var(--sans);
+    font-size:0.82rem;
+    font-weight:500;
+    letter-spacing:0.02em;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--muted);
+    transition: color .2s ease;
+    padding:4px 2px;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--pink-lite); }
+  .nav-links a:focus-visible{ outline:2px solid var(--pink); outline-offset:4px; border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    color:var(--text);
+    padding-block: clamp(30px, 4.6vw, 58px) clamp(56px, 9vw, 96px);
+  }
+  .hero-grid{
+    position:relative; z-index:2;
+    display:grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap:clamp(28px, 6vw, 64px);
+    align-items:center;
+  }
+  .hero .eyebrow{ margin-bottom:20px; }
+  .hero h1{
+    font-size: clamp(2.6rem, 5.8vw, 4.6rem);
+    line-height:1.06;
+    color:var(--text);
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    background:var(--grad-text);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-title{
+    margin-top:26px;
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(1.5rem, 2.6vw, 2rem);
+    line-height:1.2;
+    background:var(--grad-text);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-roles{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:clamp(0.66rem, 0.9vw, 0.76rem);
+    font-weight:500;
+    letter-spacing:0.02em;
+    line-height:1.9;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .hero-quote{
+    margin:22px 0 0;
+    max-width:46ch;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.02rem, 1.5vw, 1.18rem);
+    line-height:1.55;
+    color:var(--violet-lite);
+    border-left:3px solid var(--pink);
+    padding-left:20px;
+  }
+
+  .hero-emblem{
+    position:relative;
+    justify-self:center;
+    width:min(100%, 380px);
+    aspect-ratio:1/1;
+  }
+  .hero-emblem::after{
+    content:"";
+    position:absolute; inset:-14%;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(236,72,153,0.45) 0%, rgba(168,85,247,0.28) 45%, rgba(0,0,0,0) 70%);
+    filter: blur(22px);
+    z-index:0;
+  }
+  .hero-emblem .ring{
+    position:absolute; inset:0;
+    border-radius:50%;
+    overflow:hidden;
+    z-index:1;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.22), 0 0 60px -6px rgba(236,72,153,0.55), 0 40px 90px -30px rgba(0,0,0,0.8);
+    animation: spin 90s linear infinite;
+  }
+  .hero-emblem img{
+    width:100%; height:100%; object-fit:cover;
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+  .hero-emblem .cap{
+    position:absolute; left:50%; bottom:-34px; transform:translateX(-50%);
+    z-index:2;
+    font-family:var(--sans); font-size:0.7rem; letter-spacing:0.08em;
+    color:var(--muted-soft); text-transform:uppercase; white-space:nowrap;
+  }
+
+  .scroll-cue{
+    position:relative; z-index:2;
+    margin-top:clamp(46px,8vw,84px);
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--sans); font-size:0.72rem; font-weight:500; letter-spacing:0.12em;
+    color:var(--muted-soft); text-transform:uppercase;
+  }
+  .scroll-cue svg{ width:14px; height:14px; }
+
+  /* ---------- SECTION shell ---------- */
+  section{
+    position:relative;
+    padding-block: clamp(56px, 10vw, 110px);
+  }
+  .section-head{
+    display:grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap:32px;
+    margin-bottom:clamp(36px, 6vw, 60px);
+    align-items:end;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.4vw, 2.8rem);
+    color:var(--text);
+  }
+  .section-head p{
+    color:var(--muted);
+    max-width:52ch;
+    font-size:1rem;
+    margin:14px 0 0;
+  }
+
+  /* alternating tint bands over the purple field */
+  .band{
+    background: rgba(15,3,24,0.32);
+    border-block:1px solid var(--line);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.78fr 1.22fr;
+    gap:clamp(28px, 5vw, 64px);
+    align-items:start;
+  }
+  .portrait-frame{
+    position:relative;
+    border:1px solid var(--line-strong);
+    border-radius:20px;
+    padding:14px;
+    background:var(--gloss), var(--panel);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--edge), 0 30px 70px -34px rgba(0,0,0,0.85);
+  }
+  .portrait-frame img{
+    border-radius:12px;
+    filter: grayscale(0.35) contrast(1.05) saturate(1.05);
+    width:100%;
+    aspect-ratio: 3/4;
+    object-fit:cover;
+    object-position: center 20%;
+  }
+  .portrait-frame::after{
+    content:"";
+    position:absolute; left:26px; right:26px; bottom:24px;
+    height:4px;
+    border-radius:999px;
+    background: var(--grad-btn);
+    box-shadow:0 0 18px rgba(236,72,153,0.7);
+  }
+  .portrait-caption{
+    margin-top:14px;
+    font-family:var(--sans);
+    font-size:0.76rem;
+    letter-spacing:0.03em;
+    color:var(--muted-soft);
+  }
+  .about-copy p{
+    margin:0 0 20px 0;
+    font-size:1.05rem;
+    color: rgba(247,242,251,0.84);
+  }
+  .about-copy p:last-child{ margin-bottom:0; }
+  .about-copy .about-lead{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.2rem, 1.9vw, 1.5rem);
+    line-height:1.45;
+    color:var(--violet-lite);
+    border-left:3px solid var(--pink);
+    padding-left:22px;
+    margin:30px 0;
+  }
+  /* long about copy: keep the portrait alongside as it scrolls */
+  .about-media{ position:sticky; top:104px; }
+
+  /* ---------- JOURNEY ---------- */
+  .route{ display:flex; flex-direction:column; }
+  .stop{
+    display:grid;
+    grid-template-columns: 170px 1fr;
+    gap:24px;
+    padding:26px 22px;
+    border-radius:18px;
+    border:1px solid transparent;
+    transition: background .25s ease, border-color .25s ease;
+  }
+  .stop + .stop{ margin-top:6px; }
+  .stop:hover{
+    background:var(--gloss), var(--panel);
+    border-color:var(--line);
+    box-shadow: var(--edge);
+  }
+  .stop-when{
+    font-family:var(--sans);
+    font-size:0.84rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--violet-lite);
+    padding-top:5px;
+  }
+  .stop-what h3{
+    font-size:1.3rem;
+    color:var(--text);
+    margin-bottom:8px;
+  }
+  .stop-what p{
+    margin:0;
+    max-width:62ch;
+    color:var(--muted);
+    font-size:0.98rem;
+  }
+
+  /* ---------- PRACTICE ---------- */
+  .practice-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:18px;
+  }
+  .craft{
+    position:relative;
+    overflow:hidden;
+    background:var(--gloss), var(--panel);
+    border:1px solid var(--line);
+    border-radius:20px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    padding:30px 26px;
+    min-height:236px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    box-shadow: var(--edge), 0 18px 40px -30px rgba(0,0,0,0.7);
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  }
+  .craft:hover{
+    transform:translateY(-4px);
+    background:var(--gloss-hi), var(--panel-hi);
+    border-color:rgba(236,72,153,0.45);
+    box-shadow: var(--edge-hi), 0 26px 50px -26px rgba(236,72,153,0.6);
+  }
+  .craft::before{
+    content:"";
+    position:absolute; top:0; left:0; right:0; height:4px;
+  }
+  .craft.c1::before{ background:linear-gradient(90deg, var(--violet), #7c3aed); }
+  .craft.c2::before{ background:linear-gradient(90deg, var(--pink), #fb7185); }
+  .craft.c3::before{ background:linear-gradient(90deg, var(--gold), #fb923c); }
+  .craft.c4::before{ background:linear-gradient(90deg, var(--sky), var(--leaf)); }
+  .craft h3{
+    font-size:1.2rem;
+    color:var(--text);
+    margin-bottom:12px;
+  }
+  .craft p{
+    margin:0;
+    font-size:0.92rem;
+    color:var(--muted);
+  }
+  .craft .tag{
+    font-family:var(--sans);
+    font-size:0.7rem;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color: var(--violet-lite);
+    margin-top:18px;
+  }
+
+  /* ---------- WHY ---------- */
+  .why-copy{ max-width:72ch; }
+  .why-copy p{
+    margin:0 0 20px 0;
+    font-size:1.05rem;
+    color: rgba(247,242,251,0.84);
+  }
+  .why-copy p:last-child{ margin-bottom:0; }
+  .why-copy .why-lead{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.25rem, 2.1vw, 1.6rem);
+    line-height:1.45;
+    color:var(--violet-lite);
+    border-left:3px solid var(--pink);
+    padding-left:22px;
+    margin:0 0 28px 0;
+  }
+
+  /* ---------- PHILOSOPHY ---------- */
+  .belief{
+    position:relative;
+    overflow:hidden;
+  }
+  .belief-emblem{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:min(760px, 90vw);
+    aspect-ratio:1/1;
+    opacity:0.18;
+    border-radius:50%;
+    overflow:hidden;
+    filter:saturate(1.1) blur(1px);
+  }
+  .belief-emblem img{ width:100%; height:100%; object-fit:cover; }
+  .belief-inner{
+    position:relative; z-index:2;
+    max-width:820px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .belief .eyebrow{ margin:0 auto 30px; }
+  .belief blockquote{
+    margin:0;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem, 3.4vw, 2.5rem);
+    line-height:1.35;
+    color:var(--text);
+    text-shadow:0 2px 30px rgba(0,0,0,0.45);
+  }
+  .belief-note{
+    margin-top:34px;
+    max-width:56ch;
+    margin-inline:auto;
+    color:var(--muted);
+    font-size:0.98rem;
+  }
+
+  /* ---------- CONNECT ---------- */
+  .connect-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:18px;
+  }
+  .chan{
+    display:flex; flex-direction:column; gap:16px;
+    background:var(--gloss), var(--panel);
+    border:1px solid var(--line);
+    border-radius:20px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    padding:26px 22px;
+    text-decoration:none;
+    color:var(--text);
+    box-shadow: var(--edge), 0 18px 40px -30px rgba(0,0,0,0.7);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .chan:hover, .chan:focus-visible{
+    border-color: rgba(236,72,153,0.5);
+    background:var(--gloss-hi), var(--panel-hi);
+    transform: translateY(-4px);
+    box-shadow: var(--edge-hi), 0 26px 50px -26px rgba(236,72,153,0.6);
+  }
+  .chan:focus-visible{ outline:2px solid var(--pink); outline-offset:3px; }
+  .chan-icon{
+    width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    color:#fff;
+    background:var(--grad-btn);
+    box-shadow: var(--edge-hi), 0 10px 24px -12px rgba(192,38,211,0.9);
+  }
+  .chan-icon svg{ width:18px; height:18px; }
+  .chan h3{
+    font-family:var(--sans);
+    font-size:1rem;
+    font-weight:600;
+    margin:0;
+  }
+  .chan p{
+    margin:0;
+    font-size:0.86rem;
+    color:var(--muted);
+  }
+  .chan .go{
+    margin-top:auto;
+    font-family:var(--sans);
+    font-size:0.74rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--pink-lite);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:rgba(15,3,24,0.42);
+    color:var(--muted-soft);
+    padding-block:34px;
+    border-top:1px solid var(--line);
+  }
+  footer .wrap{
+    display:flex; flex-wrap:wrap; gap:12px;
+    align-items:center; justify-content:space-between;
+    font-family:var(--sans);
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 920px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-emblem{ order:-1; width:min(60%, 260px); }
+    .about-grid{ grid-template-columns:1fr; }
+    .about-media{ position:static; }
+    .section-head{ grid-template-columns:1fr; }
+    .practice-grid{ grid-template-columns:repeat(2,1fr); }
+    .connect-grid{ grid-template-columns:repeat(2,1fr); }
+    .stop{ grid-template-columns:1fr; gap:8px; padding:22px 16px; }
+    .nav-links{ display:none; }
+  }
+  @media (max-width: 640px){
+    .hero-roles{ white-space:normal; }
+  }
+  @media (max-width: 480px){
+    .practice-grid{ grid-template-columns:1fr; }
+    .connect-grid{ grid-template-columns:1fr; }
+    .btn{ flex:1 1 100%; justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="nav-mark"><img class="logo" src="assets/painting.jpg" alt="Jollymynah emblem — a painted eye in concentric circles">AMARESH NAYAK</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#why">Why</a></li>
+      <li><a href="#belief">Belief</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Odisha, India <svg class="flag" viewBox="0 0 900 600" role="img" aria-label="Flag of India"><rect width="900" height="600" fill="#f93"/><rect width="900" height="200" y="200" fill="#fff"/><rect width="900" height="200" y="400" fill="#128807"/><g stroke="#008" fill="none"><circle cx="450" cy="300" r="80" stroke-width="16"/><path d="M464.0 300.0L526.0 300.0M463.5 303.6L523.4 319.7M462.1 307.0L515.8 338.0M459.9 309.9L503.7 353.7M457.0 312.1L488.0 365.8M453.6 313.5L469.7 373.4M450.0 314.0L450.0 376.0M446.4 313.5L430.3 373.4M443.0 312.1L412.0 365.8M440.1 309.9L396.3 353.7M437.9 307.0L384.2 338.0M436.5 303.6L376.6 319.7M436.0 300.0L374.0 300.0M436.5 296.4L376.6 280.3M437.9 293.0L384.2 262.0M440.1 290.1L396.3 246.3M443.0 287.9L412.0 234.2M446.4 286.5L430.3 226.6M450.0 286.0L450.0 224.0M453.6 286.5L469.7 226.6M457.0 287.9L488.0 234.2M459.9 290.1L503.7 246.3M462.1 293.0L515.8 262.0M463.5 296.4L523.4 280.3" stroke-width="9"/></g><circle cx="450" cy="300" r="17" fill="#008"/></svg> → United Kingdom <svg class="flag" viewBox="0 0 60 30" role="img" aria-label="Flag of the United Kingdom"><clipPath id="uk-flag-clip"><path d="M30 15h30v15zv15H30zH0V0zV0h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" clip-path="url(#uk-flag-clip)" stroke="#c8102e" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6"/></svg></p>
+        <h1>I observe. I question. <em>I tell the story.</em></h1>
+        <p class="hero-title">The Observer</p>
+        <p class="hero-roles">Software Engineer · Entrepreneur · Storyteller · Teacher · Visual and Performing Artist</p>
+        <blockquote class="hero-quote">Life is a random creation, revealed through every emotion, every observation, and the courage to look within.</blockquote>
+        <div class="btn-row">
+          <a class="btn" href="#practice">Explore the practice</a>
+          <a class="btn alt" href="#connect">Follow the story</a>
+        </div>
+      </div>
+      <div class="hero-emblem">
+        <div class="ring"><img src="assets/painting.jpg" alt="An original concentric-circle painting by Amaresh Nayak, with a single eye at its centre" loading="lazy"></div>
+        <span class="cap">Jollymynah – The Observer</span>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+      keep reading
+    </div>
+  </div>
+</header>
+
+<section class="about band" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">About</p>
+      <div>
+        <h2>Born in Odisha, India. Trained as a software engineer. Still curious, still unsettled, still asking questions and, most importantly, observing.</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-media">
+        <div class="portrait-frame">
+          <img src="assets/portrait.jpg" alt="Black and white photo of Amaresh Nayak, smiling, wearing glasses and a patterned polo shirt">
+        </div>
+        <p class="portrait-caption">Amaresh Nayak — Odisha, India · currently in Manchester, United Kingdom</p>
+      </div>
+      <div class="about-copy">
+        <p>I was born in Jajpur, Odisha, India, and grew up in a joint family — the sort of home where children’s voices and curiosity were often shaped more by the people and circumstances around them than by their parents. Privacy was mostly theoretical.</p>
+        <p>I studied at Jajpur Zilla School and later at N. C. College, both close enough to home. After that, I left home to study Electronics &amp; Telecommunication Engineering at a private institution affiliated with Biju Patnaik University of Technology, graduating in 2009.</p>
+        <p>I entered the IT industry in 2011 as a project engineer. I began my career in software testing and eventually found my way into software development. In 2019, I cleared the Odisha Civil Services examination, but due to personal circumstances, I decided not to pursue it further.</p>
+        <p>In 2022, I moved to the United Kingdom. I live in Manchester now.</p>
+        <p>Over the years, teaching and mentoring have become an important part of my life. I have tutored students from different backgrounds — from school students following different board curricula and students from science backgrounds to those preparing for India’s civil services examinations. I also train people in software engineering, helping them build both technical skills and a way of thinking about problems.</p>
+        <p>Alongside that, I sculpt and make visual art, play the guitar and flute, and write and tell stories under the name Jollymynah.</p>
+        <p class="about-lead">I have never been particularly good at choosing just one thing.</p>
+        <p>I’m not a master of any of these pursuits. I used to think that was a problem. These days, I’m more interested in staying curious, observing closely, making things, learning from people, and following the questions wherever they lead.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The long way round</p>
+      <div>
+        <h2>Not a straight line — a route.</h2>
+        <p>Six markers, from a joint family in Jajpur to a life in Manchester — each one still shaping how I see the next.</p>
+      </div>
+    </div>
+    <div class="route">
+      <div class="stop">
+        <div class="stop-when">Beginnings</div>
+        <div class="stop-what">
+          <h3>Born in Jajpur, Odisha</h3>
+          <p>A joint family, and an early habit of noticing. Jajpur Zilla School, then N. C. College — both within reach of home.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">2009</div>
+        <div class="stop-what">
+          <h3>Electronics &amp; Telecommunication, BPUT</h3>
+          <p>An engineering degree from Biju Patnaik University of Technology — a trade in hand, before it was clear what I would do with it.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">2011</div>
+        <div class="stop-what">
+          <h3>Into the IT industry, as a project engineer</h3>
+          <p>I started in software testing — learning a system by trying to break it, which turned out to suit me.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">2019</div>
+        <div class="stop-what">
+          <h3>Cleared the Odisha Civil Services</h3>
+          <p>In India a government post is treated as the summit. I reached it — and personal circumstances led me not to take it further.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">2022</div>
+        <div class="stop-what">
+          <h3>Manchester, United Kingdom</h3>
+          <p>A move abroad, and a move from testing into development. New people, new arguments, and enough distance to see where I came from more honestly.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">Now</div>
+        <div class="stop-what">
+          <h3>Teaching, making, telling</h3>
+          <p>Training engineers, mentoring civil-services aspirants, and making things with my hands and my voice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="practice band" id="practice">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Practice</p>
+      <div>
+        <h2>Several crafts, one curiosity.</h2>
+        <p>Four things I keep returning to, in whatever hours the day leaves.</p>
+      </div>
+    </div>
+    <div class="practice-grid">
+      <div class="craft c1">
+        <div>
+          <h3>Teaching &amp; mentoring</h3>
+          <p>Tutoring students across school boards and science streams, guiding civil-services aspirants, and training engineers in software.</p>
+        </div>
+        <span class="tag">Ongoing</span>
+      </div>
+      <div class="craft c2">
+        <div>
+          <h3>Visual art &amp; sculpture</h3>
+          <p>Sculpting and painting, mostly for myself — a way of thinking with my hands rather than in words.</p>
+        </div>
+        <span class="tag">Sculpture · Visual art</span>
+      </div>
+      <div class="craft c3">
+        <div>
+          <h3>Storytelling &amp; writing</h3>
+          <p>Under the name Jollymynah — essays and stories built out of what I have lived, watched, and slowly worked out.</p>
+        </div>
+        <span class="tag">Jollymynah</span>
+      </div>
+      <div class="craft c4">
+        <div>
+          <h3>Music</h3>
+          <p>Guitar and flute, played for the quiet of it rather than for an audience.</p>
+        </div>
+        <span class="tag">Guitar · Flute</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why this site</p>
+      <div>
+        <h2>To tell stories, meet people, and keep learning.</h2>
+        <p>Four reasons, really — and one of them is that I still expect to be argued out of something.</p>
+      </div>
+    </div>
+    <div class="why-copy">
+      <p class="why-lead">We have never been more connected, and I have never seen so many people this alone.</p>
+      <p>Social media has spread into every hour of the day. I watch people lose their footing in it — performing a life rather than living one, measuring themselves against strangers, and going quietly lonely in a crowd of thousands. I would rather have fewer conversations and slower ones. That is most of what this site is for: to tell stories, to meet people properly, to teach what little I know, and to keep learning from anyone willing to disagree with me.</p>
+      <p>The rest of it is introspection, and some of that is uncomfortable. We worship rivers and have made some of the most polluted rivers on earth. We call our institutions sacred while corruption runs through them. We hold on to rigid practices long after anyone can explain what they are for. And many of us leave, do well abroad, and go on saying we love India from a safe distance — I include myself in that; I am writing this from Manchester.</p>
+      <p>None of it is said to run the place down. You question what you belong to. That is what belonging means.</p>
+    </div>
+  </div>
+</section>
+
+<section class="belief band" id="belief">
+  <div class="belief-emblem"><img src="assets/painting.jpg" alt="" role="presentation"></div>
+  <div class="wrap">
+    <div class="belief-inner">
+      <p class="eyebrow">What I believe</p>
+      <blockquote>“There is nothing inherently good or bad. Whatever you do, you face the consequences of your own action.”</blockquote>
+      <p class="belief-note">It’s a thought close to the Bhagavad Gita’s teaching on karma — that we’re bound to the results of what we do, not to be spared or punished by anyone else’s judgment. Life is temporary. We take it in through our senses, one observation at a time, and the rest is the courage to look at what we find.</p>
+    </div>
+  </div>
+</section>
+
+<section class="connect" id="connect">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Connect</p>
+      <div>
+        <h2>Follow the story as it’s told.</h2>
+        <p>Most of what I make lives across a few places — pick whichever fits how you like to follow along.</p>
+      </div>
+    </div>
+    <div class="connect-grid">
+      <a class="chan" href="https://www.instagram.com/Jollymynah" target="_blank" rel="noopener noreferrer">
+        <div class="chan-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        </div>
+        <h3>Instagram</h3>
+        <p>@Jollymynah — visuals, moments and the odd painting.</p>
+        <span class="go">Visit →</span>
+      </a>
+      <a class="chan" href="https://www.youtube.com/@Jollymynah" target="_blank" rel="noopener noreferrer">
+        <div class="chan-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <h3>YouTube</h3>
+        <p>Jollymynah — long-form thoughts and stories on video.</p>
+        <span class="go">Watch →</span>
+      </a>
+      <a class="chan" href="https://medium.com/@amaresh.nayak6" target="_blank" rel="noopener noreferrer">
+        <div class="chan-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6v12M20 6v12M4 6l8 9 8-9"/></svg>
+        </div>
+        <h3>Medium</h3>
+        <p>Essays and reflections, written to be read slowly.</p>
+        <span class="go">Read →</span>
+      </a>
+      <a class="chan" href="https://www.linkedin.com/in/amaresh-nayak/" target="_blank" rel="noopener noreferrer">
+        <div class="chan-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 0 1 4 0V17M12 10v7"/></svg>
+        </div>
+        <h3>LinkedIn</h3>
+        <p>The engineering and teaching side of the story.</p>
+        <span class="go">Connect →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Amaresh Nayak · Jollymynah</span>
+    <span>Odisha, India — based in Manchester, United Kingdom</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
