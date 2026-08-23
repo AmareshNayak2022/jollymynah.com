@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amaresh Nayak — Jollymynah</title>
-<meta name="description" content="Amaresh Nayak — software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK. Stories, mentoring, sculpture, music, and questions worth asking.">
+<meta name="description" content="Amaresh Nayak — engineer, teacher and storyteller. From Jajpur, Odisha; based in Manchester, UK. Creative work — stories, painting, sculpture and music — alongside teaching, mentoring, and questions worth asking.">
 <link rel="canonical" href="https://jollymynah.com/">
 <meta name="author" content="Amaresh Nayak">
 
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Jollymynah">
 <meta property="og:url" content="https://jollymynah.com/">
 <meta property="og:title" content="Amaresh Nayak — Jollymynah">
-<meta property="og:description" content="Amaresh Nayak — software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK. Stories, mentoring, sculpture, music, and questions worth asking.">
+<meta property="og:description" content="Amaresh Nayak — engineer, teacher and storyteller. From Jajpur, Odisha; based in Manchester, UK. Creative work — stories, painting, sculpture and music — alongside teaching, mentoring, and questions worth asking.">
 <meta property="og:image" content="https://jollymynah.com/assets/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Amaresh Nayak — Jollymynah">
-<meta name="twitter:description" content="Amaresh Nayak — software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK. Stories, mentoring, sculpture, music, and questions worth asking.">
+<meta name="twitter:description" content="Amaresh Nayak — engineer, teacher and storyteller. From Jajpur, Odisha; based in Manchester, UK. Creative work — stories, painting, sculpture and music — alongside teaching, mentoring, and questions worth asking.">
 <meta name="twitter:image" content="https://jollymynah.com/assets/og-cover.jpg">
 <link rel="icon" href="assets/painting.jpg">
 <link rel="apple-touch-icon" href="assets/painting.jpg">
@@ -499,6 +499,87 @@
   /* long about copy: keep the portrait alongside as it scrolls */
   .about-media{ position:sticky; top:104px; }
 
+  /* ---------- CREATIVE WORKS ---------- */
+  .work-filters{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin-bottom:34px;
+  }
+  .chip{
+    padding:9px 18px;
+    border-radius:999px;
+    border:1px solid var(--line-strong);
+    background:rgba(255,255,255,0.045);
+    background-image:var(--gloss);
+    box-shadow:var(--edge);
+    color:var(--muted);
+    font-family:var(--sans);
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .chip:hover{ color:var(--pink-lite); border-color:rgba(236,72,153,0.5); transform:translateY(-1px); }
+  .chip:focus-visible{ outline:2px solid var(--pink); outline-offset:3px; }
+  .chip[aria-pressed="true"]{
+    color:#fff;
+    border-color:transparent;
+    background-image:var(--grad-btn), var(--gloss);
+    box-shadow:var(--edge), 0 12px 26px -16px rgba(236,72,153,0.9);
+  }
+
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .work-grid:empty{ display:none; }
+
+  /* author display beats the UA [hidden] rule, so restate it */
+  .work-card[hidden], .work-empty[hidden]{ display:none; }
+  .work-card{
+    display:flex; flex-direction:column;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--gloss), var(--panel);
+    box-shadow:var(--edge);
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .work-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--line-strong);
+    box-shadow:var(--edge-hi), 0 26px 50px -30px rgba(0,0,0,0.9);
+  }
+  .work-media{
+    aspect-ratio:16/10;
+    overflow:hidden;
+    background:linear-gradient(135deg, rgba(168,85,247,0.22), rgba(236,72,153,0.16));
+  }
+  .work-media img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+  .work-card:hover .work-media img{ transform:scale(1.06); }
+  .work-body{ padding:22px; display:flex; flex-direction:column; gap:8px; }
+  .work-cat{
+    margin:0;
+    font-size:0.7rem; font-weight:700;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--violet-lite);
+  }
+  .work-body h3{ margin:0; font-size:1.2rem; color:var(--text); }
+  .work-body p{ margin:0; font-size:0.95rem; color:var(--muted); }
+
+  /* shown while the grid holds nothing to show */
+  .work-empty{
+    margin:0;
+    padding:56px 24px;
+    border:1px dashed var(--line-strong);
+    border-radius:20px;
+    text-align:center;
+    color:var(--muted-soft);
+    font-size:0.98rem;
+  }
+
   /* ---------- PRACTICE ---------- */
   .practice-grid{
     display:grid;
@@ -695,6 +776,7 @@
     .about-media{ position:static; }
     .section-head{ grid-template-columns:1fr; }
     .practice-grid{ grid-template-columns:repeat(2,1fr); }
+    .work-grid{ grid-template-columns:repeat(2,1fr); }
     .connect-grid{ grid-template-columns:repeat(2,1fr); }
 
     .nav-toggle{ display:inline-flex; }
@@ -736,6 +818,8 @@
     .eyebrow{ font-size:0.7rem; padding:7px 14px; gap:7px; }
     .hero .eyebrow{ margin-bottom:16px; }
     .practice-grid{ grid-template-columns:1fr; }
+    .work-grid{ grid-template-columns:1fr; }
+    .chip{ padding:8px 14px; font-size:0.74rem; }
     .connect-grid{ grid-template-columns:1fr; }
     .btn{ flex:1 1 100%; justify-content:center; }
   }
@@ -757,6 +841,7 @@
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
+      <li><a href="#work">Works</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#why">Why</a></li>
       <li><a href="#belief">Belief</a></li>
@@ -823,7 +908,47 @@
   </div>
 </section>
 
-<section class="practice" id="practice">
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Explore</p>
+      <div>
+        <h2>Creative works.</h2>
+        <p>Stories, painting, sculpture, and music — a collection still being built.</p>
+      </div>
+    </div>
+
+    <div class="work-filters" role="group" aria-label="Filter creative works by category">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="stories" aria-pressed="false">Stories</button>
+      <button class="chip" type="button" data-filter="arts" aria-pressed="false">Arts</button>
+      <button class="chip" type="button" data-filter="sculptures" aria-pressed="false">Sculptures</button>
+      <button class="chip" type="button" data-filter="prints" aria-pressed="false">Prints</button>
+      <button class="chip" type="button" data-filter="music" aria-pressed="false">Music</button>
+    </div>
+
+    <!-- Work goes here. One card per piece; data-category must match a chip's
+         data-filter (stories | arts | sculptures | prints | music):
+
+         <article class="work-card" data-category="sculptures">
+           <div class="work-media">
+             <img src="assets/work/piece.jpg" alt="Describe the piece" width="800" height="500" loading="lazy" decoding="async">
+           </div>
+           <div class="work-body">
+             <p class="work-cat">Sculptures</p>
+             <h3>Title of the piece</h3>
+             <p>A line or two about it.</p>
+           </div>
+         </article>
+
+         The filters and the empty message handle themselves. -->
+    <div class="work-grid" id="workGrid"></div>
+
+    <p class="work-empty" id="workEmpty">Nothing here yet — new work is on its way.</p>
+  </div>
+</section>
+
+<section class="practice band" id="practice">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Practice</p>
@@ -961,7 +1086,7 @@
   "url": "https://jollymynah.com/",
   "image": "https://jollymynah.com/assets/portrait.jpg",
   "jobTitle": "Software Engineer",
-  "description": "Software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK.",
+  "description": "Engineer, teacher and storyteller. From Jajpur, Odisha; based in Manchester, UK. Creative work — stories, painting, sculpture and music — alongside teaching and mentoring.",
   "birthPlace": { "@type": "Place", "name": "Jajpur, Odisha, India" },
   "homeLocation": { "@type": "Place", "name": "Manchester, United Kingdom" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "Biju Patnaik University of Technology" },
@@ -1019,6 +1144,40 @@
     (wide.addEventListener ? wide.addEventListener.bind(wide,'change') : wide.addListener.bind(wide))(function(e){
       if(e.matches) setOpen(false);
     });
+  })();
+
+  /* ---- creative works filter ----
+     Works with zero cards; starts filtering the moment cards are added. */
+  (function(){
+    var chips = document.querySelectorAll('.work-filters .chip');
+    var grid  = document.getElementById('workGrid');
+    var empty = document.getElementById('workEmpty');
+    if(!chips.length || !grid || !empty) return;
+
+    function apply(filter){
+      var cards = grid.querySelectorAll('.work-card');
+      var shown = 0;
+      for(var i = 0; i < cards.length; i++){
+        var match = filter === 'all' || cards[i].getAttribute('data-category') === filter;
+        cards[i].hidden = !match;
+        if(match) shown++;
+      }
+      empty.hidden = shown > 0;
+      empty.textContent = cards.length === 0
+        ? 'Nothing here yet — new work is on its way.'
+        : 'Nothing in this category yet.';
+    }
+
+    for(var i = 0; i < chips.length; i++){
+      chips[i].addEventListener('click', function(){
+        for(var j = 0; j < chips.length; j++){
+          chips[j].setAttribute('aria-pressed', String(chips[j] === this));
+        }
+        apply(this.getAttribute('data-filter'));
+      });
+    }
+
+    apply('all');
   })();
 </script>
 
