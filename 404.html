@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — Jollymynah</title>
+<meta name="description" content="That page does not exist on jollymynah.com.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/painting.jpg">
+<link rel="apple-touch-icon" href="/assets/painting.jpg">
+<meta name="theme-color" content="#2a0b3d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#1b0726;
+    --violet:#a855f7;
+    --pink:#ec4899;
+    --text:#f7f2fb;
+    --muted: rgba(240,230,250,0.70);
+    --line-strong: rgba(255,255,255,0.18);
+    --gloss: linear-gradient(180deg, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.022) 42%, rgba(255,255,255,0) 72%);
+    --edge: inset 0 1px 0 rgba(255,255,255,0.14);
+    --grad-text: linear-gradient(96deg, var(--violet) 0%, #d946ef 45%, var(--pink) 100%);
+    --grad-btn: linear-gradient(96deg, #7c3aed 0%, #c026d3 55%, var(--pink) 100%);
+    --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+    --sans:"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    padding: clamp(24px, 6vw, 64px);
+    background:var(--deep);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(115% 85% at 76% 6%, rgba(168,85,247,0.55) 0%, rgba(126,34,206,0.28) 38%, rgba(0,0,0,0) 72%),
+      radial-gradient(95% 80% at 6% 96%, rgba(217,70,239,0.26) 0%, rgba(0,0,0,0) 62%),
+      linear-gradient(158deg, #2a0b3d 0%, #4c1266 46%, #1b0726 100%);
+  }
+  .card{ max-width:560px; text-align:center; }
+  .emblem{
+    width:clamp(112px, 26vw, 152px);
+    aspect-ratio:1/1;
+    margin:0 auto 30px;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.22), 0 0 60px -6px rgba(236,72,153,0.55);
+    animation: spin 90s linear infinite;
+  }
+  .emblem img{ width:100%; height:100%; object-fit:cover; display:block; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .code{
+    display:inline-block;
+    margin:0 0 14px;
+    padding:7px 16px;
+    border-radius:999px;
+    background:rgba(24,6,36,0.45);
+    border:1px solid var(--line-strong);
+    font-size:0.74rem;
+    font-weight:600;
+    letter-spacing:0.09em;
+    color:#f472b6;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(1.9rem, 5.4vw, 2.9rem);
+    line-height:1.18;
+    margin:0 0 16px;
+  }
+  h1 em{
+    font-style:italic;
+    background:var(--grad-text);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+  }
+  p{ color:var(--muted); margin:0 0 30px; font-size:1.02rem; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:13px 26px;
+    border-radius:999px;
+    background-image:var(--grad-btn), var(--gloss);
+    box-shadow:var(--edge), 0 16px 34px -18px rgba(236,72,153,0.9);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.9rem;
+    letter-spacing:0.02em;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:var(--edge), 0 22px 40px -18px rgba(236,72,153,1); }
+  .btn:focus-visible{ outline:2px solid var(--pink); outline-offset:4px; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="emblem"><img src="/assets/painting.jpg" alt="" width="900" height="900"></div>
+    <p class="code">404 — not found</p>
+    <h1>That page isn’t here. <em>The story still is.</em></h1>
+    <p>Whatever you were looking for has moved, or never existed. Either way, the way back is short.</p>
+    <a class="btn" href="/">Back to the beginning →</a>
+  </main>
+</body>
+</html>

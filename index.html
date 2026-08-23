@@ -5,6 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amaresh Nayak — Jollymynah</title>
 <meta name="description" content="Amaresh Nayak — software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK. Stories, mentoring, sculpture, music, and questions worth asking.">
+<link rel="canonical" href="https://jollymynah.com/">
+<meta name="author" content="Amaresh Nayak">
+
+<!-- social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jollymynah">
+<meta property="og:url" content="https://jollymynah.com/">
+<meta property="og:title" content="Amaresh Nayak — Jollymynah">
+<meta property="og:description" content="Amaresh Nayak — software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK. Stories, mentoring, sculpture, music, and questions worth asking.">
+<meta property="og:image" content="https://jollymynah.com/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An original concentric-circle painting by Amaresh Nayak, with a single eye at its centre">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Amaresh Nayak — Jollymynah">
+<meta name="twitter:description" content="Amaresh Nayak — software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK. Stories, mentoring, sculpture, music, and questions worth asking.">
+<meta name="twitter:image" content="https://jollymynah.com/assets/og-cover.jpg">
 <link rel="icon" href="assets/painting.jpg">
 <link rel="apple-touch-icon" href="assets/painting.jpg">
 <meta name="theme-color" content="#2a0b3d">
@@ -222,6 +240,34 @@
   }
   .nav-links a:hover, .nav-links a:focus-visible{ color:var(--pink-lite); }
   .nav-links a:focus-visible{ outline:2px solid var(--pink); outline-offset:4px; border-radius:2px;}
+
+  /* hamburger — only ever shown once .nav-links collapses (<=920px) */
+  .nav-toggle{
+    display:none;
+    align-items:center; justify-content:center;
+    width:42px; height:42px;
+    padding:0;
+    border-radius:12px;
+    border:1px solid var(--line-strong);
+    background:rgba(255,255,255,0.05);
+    background-image:var(--gloss);
+    box-shadow:var(--edge);
+    color:var(--text);
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .nav-toggle:hover{ background:rgba(255,255,255,0.09); border-color:rgba(255,255,255,0.3); }
+  .nav-toggle:focus-visible{ outline:2px solid var(--pink); outline-offset:3px; }
+  .nav-toggle svg{ width:20px; height:20px; }
+  /* the three bars morph into a cross when the panel is open */
+  .nav-toggle .bar{
+    transition: transform .28s cubic-bezier(.4,0,.2,1), opacity .18s ease;
+    transform-origin:center;
+  }
+  .nav-toggle[aria-expanded="true"] .bar-t{ transform:translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bar-m{ opacity:0; }
+  .nav-toggle[aria-expanded="true"] .bar-b{ transform:translateY(-6px) rotate(-45deg); }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -649,7 +695,37 @@
     .practice-grid{ grid-template-columns:repeat(2,1fr); }
     .connect-grid{ grid-template-columns:repeat(2,1fr); }
     .stop{ grid-template-columns:1fr; gap:8px; padding:22px 16px; }
-    .nav-links{ display:none; }
+
+    .nav-toggle{ display:inline-flex; }
+    .nav .wrap{ flex-wrap:wrap; row-gap:0; }
+    /* the panel is a third flex item on its own line, collapsed to zero height */
+    .nav-links{
+      flex-basis:100%;
+      flex-direction:column;
+      gap:0;
+      overflow:hidden;
+      max-height:0;
+      opacity:0;
+      visibility:hidden;
+      transition: max-height .34s cubic-bezier(.4,0,.2,1), opacity .24s ease, visibility 0s linear .34s;
+    }
+    .nav-links[data-open="true"]{
+      max-height:460px;
+      opacity:1;
+      visibility:visible;
+      transition: max-height .34s cubic-bezier(.4,0,.2,1), opacity .24s ease, visibility 0s;
+    }
+    .nav-links li{ border-top:1px solid var(--line); }
+    .nav-links li:first-child{ margin-top:12px; }
+    .nav-links li:last-child{ margin-bottom:6px; }
+    .nav-links a{
+      display:block;
+      padding:13px 2px;
+      font-size:0.9rem;
+      letter-spacing:0.04em;
+    }
+    /* the panel clips its overflow, so draw the focus ring inside the link */
+    .nav-links a:focus-visible{ outline-offset:-2px; border-radius:6px; }
   }
   @media (max-width: 640px){
     /* wraps here anyway, so drop the desktop one-line squeeze */
@@ -669,7 +745,14 @@
 <nav class="nav">
   <div class="wrap">
     <a href="#top" class="nav-mark"><img class="logo" src="assets/painting.jpg" alt="Jollymynah emblem — a painted eye in concentric circles">AMARESH NAYAK</a>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path class="bar bar-t" d="M4 6h16"/>
+        <path class="bar bar-m" d="M4 12h16"/>
+        <path class="bar bar-b" d="M4 18h16"/>
+      </svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#journey">Journey</a></li>
       <li><a href="#practice">Practice</a></li>
@@ -695,8 +778,8 @@
         </div>
       </div>
       <div class="hero-emblem">
-        <div class="ring"><img src="assets/painting.jpg" alt="An original concentric-circle painting by Amaresh Nayak, with a single eye at its centre" loading="lazy"></div>
-        <span class="cap">Jollymynah – The Observer</span>
+        <div class="ring"><img src="assets/painting.jpg" alt="An original concentric-circle painting by Amaresh Nayak, with a single eye at its centre" width="900" height="900" fetchpriority="high" decoding="async"></div>
+        <span class="cap">Jollymynah — The Observer</span>
       </div>
     </div>
     <div class="scroll-cue">
@@ -717,7 +800,7 @@
     <div class="about-grid">
       <div class="about-media">
         <div class="portrait-frame">
-          <img src="assets/portrait.jpg" alt="Black and white photo of Amaresh Nayak, smiling, wearing glasses and a patterned polo shirt">
+          <img src="assets/portrait.jpg" alt="Black and white photo of Amaresh Nayak, smiling, wearing glasses and a patterned polo shirt" width="660" height="700" loading="lazy" decoding="async">
         </div>
         <p class="portrait-caption">Amaresh Nayak — Odisha, India · currently in Manchester, United Kingdom</p>
       </div>
@@ -852,7 +935,7 @@
 </section>
 
 <section class="belief band" id="belief">
-  <div class="belief-emblem"><img src="assets/painting.jpg" alt="" role="presentation"></div>
+  <div class="belief-emblem"><img src="assets/painting.jpg" alt="" width="900" height="900" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="belief-inner">
       <p class="eyebrow">What I believe</p>
@@ -915,8 +998,68 @@
   </div>
 </footer>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Amaresh Nayak",
+  "alternateName": "Jollymynah",
+  "url": "https://jollymynah.com/",
+  "image": "https://jollymynah.com/assets/portrait.jpg",
+  "jobTitle": "Software Engineer",
+  "description": "Software engineer, teacher and storyteller. Born and raised in Jajpur, Odisha; based in Manchester, UK.",
+  "birthPlace": { "@type": "Place", "name": "Jajpur, Odisha, India" },
+  "homeLocation": { "@type": "Place", "name": "Manchester, United Kingdom" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Biju Patnaik University of Technology" },
+  "knowsAbout": ["Software engineering", "Teaching and mentoring", "Storytelling", "Sculpture", "Visual art", "Music"],
+  "sameAs": [
+    "https://www.instagram.com/Jollymynah",
+    "https://www.youtube.com/@Jollymynah",
+    "https://medium.com/@amaresh.nayak6",
+    "https://www.linkedin.com/in/amaresh-nayak/"
+  ]
+}
+</script>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---- mobile menu ---- */
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var links  = document.getElementById('navLinks');
+    if(!toggle || !links) return;
+
+    function setOpen(open){
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if(open){ links.setAttribute('data-open','true'); }
+      else { links.removeAttribute('data-open'); }
+    }
+
+    toggle.addEventListener('click', function(){
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    /* an anchor jump should close the panel behind you */
+    links.addEventListener('click', function(e){
+      if(e.target.closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true'){
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    /* if the viewport grows back to the desktop layout, drop the open state
+       so the row is never left with a stale data-open attribute */
+    var wide = window.matchMedia('(min-width: 921px)');
+    (wide.addEventListener ? wide.addEventListener.bind(wide,'change') : wide.addListener.bind(wide))(function(e){
+      if(e.matches) setOpen(false);
+    });
+  })();
 </script>
 
 </body>
