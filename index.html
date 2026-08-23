@@ -640,7 +640,9 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 920px){
     .hero-grid{ grid-template-columns:1fr; }
-    .hero-emblem{ order:-1; width:min(60%, 260px); }
+    /* .cap hangs ~52px below the emblem and contributes no height:
+       reserve room for it, or it lands on the eyebrow pill below */
+    .hero-emblem{ order:-1; width:min(60%, 260px); margin-bottom:48px; }
     .about-grid{ grid-template-columns:1fr; }
     .about-media{ position:static; }
     .section-head{ grid-template-columns:1fr; }
@@ -650,9 +652,12 @@
     .nav-links{ display:none; }
   }
   @media (max-width: 640px){
-    .hero-roles{ white-space:normal; }
+    /* wraps here anyway, so drop the desktop one-line squeeze */
+    .hero-roles{ white-space:normal; font-size:0.82rem; line-height:1.75; }
   }
   @media (max-width: 480px){
+    .eyebrow{ font-size:0.7rem; padding:7px 14px; gap:7px; }
+    .hero .eyebrow{ margin-bottom:16px; }
     .practice-grid{ grid-template-columns:1fr; }
     .connect-grid{ grid-template-columns:1fr; }
     .btn{ flex:1 1 100%; justify-content:center; }
