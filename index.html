@@ -447,6 +447,28 @@
     color: rgba(247,242,251,0.84);
   }
   .about-copy p:last-child{ margin-bottom:0; }
+
+  /* prose links — the global a{color:inherit} would render these invisible */
+  .about-copy a, .stop-what a{
+    color:var(--violet-lite);
+    text-decoration:none;
+    background-image:linear-gradient(var(--pink), var(--pink));
+    background-size:100% 1px;
+    background-repeat:no-repeat;
+    background-position:0 100%;
+    padding-bottom:1px;
+    transition: color .2s ease, background-size .25s ease;
+  }
+  .about-copy a:hover, .stop-what a:hover,
+  .about-copy a:focus-visible, .stop-what a:focus-visible{
+    color:var(--pink-lite);
+    background-size:100% 2px;
+  }
+  .about-copy a:focus-visible, .stop-what a:focus-visible{
+    outline:2px solid var(--pink);
+    outline-offset:3px;
+    border-radius:2px;
+  }
   .about-copy .about-lead{
     font-family:var(--serif);
     font-style:italic;
@@ -809,7 +831,7 @@
         <p>I studied at Jajpur Zilla School and later at N.C. Junior College, both close enough to home. After that, I left home to study Electronics &amp; Telecommunication Engineering at a private institution affiliated with Biju Patnaik University of Technology, graduating in 2009.</p>
         <p>I entered the IT industry in 2011 as a project engineer. I began my career in software testing and eventually found my way into software development. In 2019, I cleared the Odisha Civil Services examination, but due to personal circumstances, I decided not to pursue it further.</p>
         <p>In 2022, I moved to the United Kingdom. I live in Manchester now.</p>
-        <p>In 2025, I started my own company. Puja Purohit is a religious technology business — Pandit booking, Samagri procurement, Mandir Darshan, and Sanatan AI, an astrology service.</p>
+        <p>In 2025, I started my own company. <a href="https://www.pujapurohit.co.uk/" target="_blank" rel="noopener noreferrer">Puja Purohit</a> is a religious technology business — Pandit booking, Samagri procurement, Mandir Darshan, and Sanatan AI, an astrology service.</p>
         <p>Over the years, teaching and mentoring have become an important part of my life. I have tutored students from different backgrounds — from school students following different board curricula and students from science backgrounds to those preparing for India’s civil services examinations. I also train people in software engineering, helping them build both technical skills and a way of thinking about problems.</p>
         <p>Alongside that, I sculpt and make visual art, play the guitar and flute, and write and tell stories under the name Jollymynah.</p>
         <p class="about-lead">I have never been particularly good at choosing just one thing.</p>
@@ -868,7 +890,7 @@
         <div class="stop-when">2025</div>
         <div class="stop-what">
           <h3>Entrepreneurship</h3>
-          <p>Set up a business in the United Kingdom. Puja Purohit is a religious technology company providing services across several areas — including Pandit booking, Samagri procurement, Mandir Darshan, and Sanatan AI, an astrology service.</p>
+          <p>Set up a business in the United Kingdom. <a href="https://www.pujapurohit.co.uk/" target="_blank" rel="noopener noreferrer">Puja Purohit</a> is a religious technology company providing services across several areas — including Pandit booking, Samagri procurement, Mandir Darshan, and Sanatan AI, an astrology service.</p>
         </div>
       </div>
       <div class="stop">
@@ -1022,6 +1044,12 @@
   "birthPlace": { "@type": "Place", "name": "Jajpur, Odisha, India" },
   "homeLocation": { "@type": "Place", "name": "Manchester, United Kingdom" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "Biju Patnaik University of Technology" },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Puja Purohit",
+    "url": "https://www.pujapurohit.co.uk/",
+    "description": "A religious technology business — Pandit booking, Samagri procurement, Mandir Darshan, and Sanatan AI."
+  },
   "knowsAbout": ["Software engineering", "Teaching and mentoring", "Storytelling", "Sculpture", "Visual art", "Music"],
   "sameAs": [
     "https://www.instagram.com/Jollymynah",
