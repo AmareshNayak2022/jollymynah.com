@@ -466,7 +466,7 @@
   .about-copy p:last-child{ margin-bottom:0; }
 
   /* prose links — the global a{color:inherit} would render these invisible */
-  .about-copy a, .stop-what a{
+  .about-copy a{
     color:var(--violet-lite);
     text-decoration:none;
     background-image:linear-gradient(var(--pink), var(--pink));
@@ -476,12 +476,12 @@
     padding-bottom:1px;
     transition: color .2s ease, background-size .25s ease;
   }
-  .about-copy a:hover, .stop-what a:hover,
-  .about-copy a:focus-visible, .stop-what a:focus-visible{
+  .about-copy a:hover,
+  .about-copy a:focus-visible{
     color:var(--pink-lite);
     background-size:100% 2px;
   }
-  .about-copy a:focus-visible, .stop-what a:focus-visible{
+  .about-copy a:focus-visible{
     outline:2px solid var(--pink);
     outline-offset:3px;
     border-radius:2px;
@@ -498,43 +498,6 @@
   }
   /* long about copy: keep the portrait alongside as it scrolls */
   .about-media{ position:sticky; top:104px; }
-
-  /* ---------- JOURNEY ---------- */
-  .route{ display:flex; flex-direction:column; }
-  .stop{
-    display:grid;
-    grid-template-columns: 170px 1fr;
-    gap:24px;
-    padding:26px 22px;
-    border-radius:18px;
-    border:1px solid transparent;
-    transition: background .25s ease, border-color .25s ease;
-  }
-  .stop + .stop{ margin-top:6px; }
-  .stop:hover{
-    background:var(--gloss), var(--panel);
-    border-color:var(--line);
-    box-shadow: var(--edge);
-  }
-  .stop-when{
-    font-family:var(--sans);
-    font-size:0.84rem;
-    font-weight:600;
-    letter-spacing:0.04em;
-    color:var(--violet-lite);
-    padding-top:5px;
-  }
-  .stop-what h3{
-    font-size:1.3rem;
-    color:var(--text);
-    margin-bottom:8px;
-  }
-  .stop-what p{
-    margin:0;
-    max-width:62ch;
-    color:var(--muted);
-    font-size:0.98rem;
-  }
 
   /* ---------- PRACTICE ---------- */
   .practice-grid{
@@ -733,7 +696,6 @@
     .section-head{ grid-template-columns:1fr; }
     .practice-grid{ grid-template-columns:repeat(2,1fr); }
     .connect-grid{ grid-template-columns:repeat(2,1fr); }
-    .stop{ grid-template-columns:1fr; gap:8px; padding:22px 16px; }
 
     .nav-toggle{ display:inline-flex; }
     .nav .wrap{ flex-wrap:wrap; row-gap:0; }
@@ -795,7 +757,6 @@
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#journey">Journey</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#why">Why</a></li>
       <li><a href="#belief">Belief</a></li>
@@ -862,70 +823,7 @@
   </div>
 </section>
 
-<section class="journey" id="journey">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">The long way round</p>
-      <div>
-        <h2>Not a straight line: a route.</h2>
-        <p>Seven markers, from Odisha to a life in Manchester — each one still shaping how I see the next.</p>
-      </div>
-    </div>
-    <div class="route">
-      <div class="stop">
-        <div class="stop-when">Beginnings</div>
-        <div class="stop-what">
-          <h3>Born in Odisha, India</h3>
-          <p>A joint family and an early habit of observing and questioning. Went to Jajpur Zilla School, Jajpur, and N.C. Junior College, Jajpur — both within reach of home.</p>
-        </div>
-      </div>
-      <div class="stop">
-        <div class="stop-when">2009</div>
-        <div class="stop-what">
-          <h3>Electronics &amp; Telecommunication, BPUT</h3>
-          <p>An engineering degree from Biju Patnaik University of Technology — a trade in hand, before it was clear what I would do with it.</p>
-        </div>
-      </div>
-      <div class="stop">
-        <div class="stop-when">2011</div>
-        <div class="stop-what">
-          <h3>Into the IT industry, as a project engineer</h3>
-          <p>I started my career as a project engineer, learning systems by trying to break them. It would be years before the work appealed to me. Over the years, I have worked with Wipro, Sapient, Wells Fargo, IRIS Software, Sharp Gaming, and JD Sports Fashion.</p>
-        </div>
-      </div>
-      <div class="stop">
-        <div class="stop-when">2019</div>
-        <div class="stop-what">
-          <h3>Cleared the Odisha Civil Services</h3>
-          <p>In India, a government post is often treated as the summit. I cleared the examination — and personal circumstances led me not to take it further.</p>
-        </div>
-      </div>
-      <div class="stop">
-        <div class="stop-when">2022</div>
-        <div class="stop-what">
-          <h3>Manchester, United Kingdom</h3>
-          <p>A move abroad — and, unexpectedly, the place where software engineering started to appeal. Better work, a better environment, new arguments, and enough distance to see where I came from more honestly.</p>
-        </div>
-      </div>
-      <div class="stop">
-        <div class="stop-when">2025</div>
-        <div class="stop-what">
-          <h3>Entrepreneurship</h3>
-          <p>A few dear friends had already started <a href="https://www.pujapurohit.co.uk/" target="_blank" rel="noopener noreferrer">Puja Purohit</a> in India — a religious technology company providing services across several areas, including Pandit booking, Samagri procurement, Mandir Darshan, and Sanatan AI, an astrology service. I helped set it up in the United Kingdom, and build it with them.</p>
-        </div>
-      </div>
-      <div class="stop">
-        <div class="stop-when">Now</div>
-        <div class="stop-what">
-          <h3>Teaching and training</h3>
-          <p>Training engineers, mentoring civil-services aspirants, and continuing to learn, make, and share what I know.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="practice band" id="practice">
+<section class="practice" id="practice">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Practice</p>
