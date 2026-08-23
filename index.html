@@ -741,6 +741,56 @@
     font-size:0.86rem;
     color:var(--muted);
   }
+  /* email sits apart from the social grid: different kind of channel,
+     and a fifth card would orphan in a four-column row */
+  .write{
+    margin-top:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:18px 26px;
+    padding:26px 28px;
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:var(--gloss), var(--panel);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--edge), 0 18px 40px -30px rgba(0,0,0,0.7);
+  }
+  .write-copy{ min-width:min(100%, 260px); flex:1 1 320px; }
+  .write-copy h3{
+    font-family:var(--sans);
+    font-size:1rem;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  .write-copy p{
+    margin:0;
+    font-size:0.86rem;
+    color:var(--muted);
+    max-width:52ch;
+  }
+  .write-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:13px 24px;
+    border-radius:999px;
+    background-image:var(--grad-btn), var(--gloss);
+    box-shadow:var(--edge), 0 16px 34px -18px rgba(236,72,153,0.9);
+    color:#fff;
+    text-decoration:none;
+    font-size:0.88rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+    word-break:break-all;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .write-link:hover{ transform:translateY(-2px); box-shadow:var(--edge), 0 22px 40px -18px rgba(236,72,153,1); }
+  .write-link:focus-visible{ outline:2px solid var(--pink); outline-offset:4px; }
+  .write-link svg{ width:17px; height:17px; flex:none; }
+
   .chan .go{
     margin-top:auto;
     font-family:var(--sans);
@@ -1028,7 +1078,7 @@
       <p class="eyebrow">Connect</p>
       <div>
         <h2>Follow the story as it’s told.</h2>
-        <p>Most of what I make lives across a few places — pick whichever fits how you like to follow along.</p>
+        <p>Most of what I make lives across a few places — pick whichever fits how you like to follow along, or write to me directly.</p>
       </div>
     </div>
     <div class="connect-grid">
@@ -1065,6 +1115,17 @@
         <span class="go">Connect →</span>
       </a>
     </div>
+
+    <div class="write">
+      <div class="write-copy">
+        <h3>Or just write to me</h3>
+        <p>The slower way, and the one I prefer. Questions, disagreements, or something you are working on — all welcome.</p>
+      </div>
+      <a class="write-link" href="mailto:amaresh.nayak6@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="M3 7l9 6 9-6"/></svg>
+        amaresh.nayak6@gmail.com
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1084,6 +1145,7 @@
   "name": "Amaresh Nayak",
   "alternateName": "Jollymynah",
   "url": "https://jollymynah.com/",
+  "email": "mailto:amaresh.nayak6@gmail.com",
   "image": "https://jollymynah.com/assets/portrait.jpg",
   "jobTitle": "Software Engineer",
   "description": "Engineer, teacher and storyteller. From Jajpur, Odisha; based in Manchester, UK. Creative work — stories, painting, sculpture and music — alongside teaching and mentoring.",
