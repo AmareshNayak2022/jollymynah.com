@@ -110,6 +110,23 @@
   a{color:inherit;}
   ::selection{ background:rgba(236,72,153,0.35); color:#fff; }
 
+  /* keyboard users can jump the nav; visible only once focused */
+  .skip{
+    position:fixed;
+    left:12px; top:-100px;
+    z-index:60;
+    padding:11px 18px;
+    border-radius:0 0 12px 12px;
+    background:var(--deep-2);
+    border:1px solid var(--line-strong);
+    color:var(--text);
+    font-size:0.84rem;
+    font-weight:600;
+    text-decoration:none;
+    transition: top .18s ease;
+  }
+  .skip:focus{ top:0; outline:2px solid var(--pink); outline-offset:2px; }
+
   .wrap{
     max-width:1180px;
     margin:0 auto;
@@ -764,6 +781,8 @@
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <nav class="nav">
   <div class="wrap">
     <a href="#top" class="nav-mark"><img class="logo" src="assets/painting.jpg" alt="Jollymynah emblem — a painted eye in concentric circles">AMARESH NAYAK</a>
@@ -785,14 +804,16 @@
   </div>
 </nav>
 
+<main id="main">
+
 <header class="hero" id="top">
   <div class="wrap">
     <div class="hero-grid">
       <div>
         <p class="eyebrow">Odisha, India <svg class="flag" viewBox="0 0 900 600" role="img" aria-label="Flag of India"><rect width="900" height="600" fill="#f93"/><rect width="900" height="200" y="200" fill="#fff"/><rect width="900" height="200" y="400" fill="#128807"/><g stroke="#008" fill="none"><circle cx="450" cy="300" r="80" stroke-width="16"/><path d="M464.0 300.0L526.0 300.0M463.5 303.6L523.4 319.7M462.1 307.0L515.8 338.0M459.9 309.9L503.7 353.7M457.0 312.1L488.0 365.8M453.6 313.5L469.7 373.4M450.0 314.0L450.0 376.0M446.4 313.5L430.3 373.4M443.0 312.1L412.0 365.8M440.1 309.9L396.3 353.7M437.9 307.0L384.2 338.0M436.5 303.6L376.6 319.7M436.0 300.0L374.0 300.0M436.5 296.4L376.6 280.3M437.9 293.0L384.2 262.0M440.1 290.1L396.3 246.3M443.0 287.9L412.0 234.2M446.4 286.5L430.3 226.6M450.0 286.0L450.0 224.0M453.6 286.5L469.7 226.6M457.0 287.9L488.0 234.2M459.9 290.1L503.7 246.3M462.1 293.0L515.8 262.0M463.5 296.4L523.4 280.3" stroke-width="9"/></g><circle cx="450" cy="300" r="17" fill="#008"/></svg> → Manchester, United Kingdom <svg class="flag" viewBox="0 0 60 30" role="img" aria-label="Flag of the United Kingdom"><clipPath id="uk-flag-clip"><path d="M30 15h30v15zv15H30zH0V0zV0h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" clip-path="url(#uk-flag-clip)" stroke="#c8102e" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6"/></svg></p>
         <h1>I observe. I question. <em>I tell the story.</em></h1>
-        <p class="hero-title">The Observer</p>
-        <p class="hero-roles">Software Engineer · Entrepreneur · Storyteller · Teacher · Visual and Performing Artist</p>
+        <p class="hero-title">Jollymynah</p>
+        <p class="hero-roles">Engineer by trade. Teaching, storytelling, art, and music by inclination.</p>
         <blockquote class="hero-quote">Life is a random creation, revealed through every emotion, every observation, and the courage to look within.</blockquote>
         <div class="btn-row">
           <a class="btn" href="#practice">Explore the practice</a>
@@ -801,7 +822,7 @@
       </div>
       <div class="hero-emblem">
         <div class="ring"><img src="assets/painting.jpg" alt="An original concentric-circle painting by Amaresh Nayak, with a single eye at its centre" width="900" height="900" fetchpriority="high" decoding="async"></div>
-        <span class="cap">Jollymynah — The Observer</span>
+        <span class="cap">An original painting</span>
       </div>
     </div>
     <div class="scroll-cue">
@@ -876,7 +897,7 @@
         <div class="stop-when">2019</div>
         <div class="stop-what">
           <h3>Cleared the Odisha Civil Services</h3>
-          <p>In India, a government post is often treated as the summit. I reached it — and personal circumstances led me not to take it further.</p>
+          <p>In India, a government post is often treated as the summit. I cleared the examination — and personal circumstances led me not to take it further.</p>
         </div>
       </div>
       <div class="stop">
@@ -972,7 +993,7 @@
   <div class="wrap">
     <div class="belief-inner">
       <p class="eyebrow">What I believe</p>
-      <blockquote>“There is nothing inherently good or bad. Whatever you do, you face the consequences of your own action.”</blockquote>
+      <blockquote>There is nothing inherently good or bad. Whatever you do, you face the consequences of your own action.</blockquote>
       <p class="belief-note">It’s a thought close to the Bhagavad Gita’s teaching on karma — that we’re bound to the results of what we do, not to be spared or punished by anyone else’s judgement. Life is temporary. We take it in through our senses, one observation at a time, and the rest is the courage to look at what we find.</p>
     </div>
   </div>
@@ -1023,6 +1044,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
