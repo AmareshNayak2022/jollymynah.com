@@ -559,8 +559,19 @@
     background:linear-gradient(135deg, rgba(168,85,247,0.22), rgba(236,72,153,0.16));
   }
   .work-media img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
-  /* upright shots sit whole inside the frame instead of being cropped to it */
-  .work-media.upright img{ object-fit:contain; }
+  /* an upright shot sits whole inside the frame instead of being cropped to
+     it, over a blurred copy of itself so the sides never read as dead space */
+  .work-media.upright{ position:relative; }
+  .work-media.upright::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:var(--shot);
+    background-size:cover;
+    background-position:center;
+    filter:blur(20px) saturate(0.75) brightness(0.45);
+    transform:scale(1.2);
+  }
+  .work-media.upright img{ position:relative; object-fit:contain; }
   .work-card:hover .work-media img{ transform:scale(1.06); }
   .work-body{ padding:22px; display:flex; flex-direction:column; gap:8px; }
   .work-body .work-cat{
@@ -1068,8 +1079,8 @@
       </article>
 
       <article class="work-card" data-category="sculptures">
-        <div class="work-media upright">
-          <img src="assets/work/sculpture-1.jpg" alt="A hand-built clay rendition of the Dancing Girl of Mohenjo-daro — a standing figure with one hand set on her hip and the opposite arm stacked with bangles, held upright in an open palm" width="600" height="800" loading="lazy" decoding="async">
+        <div class="work-media upright" style="--shot:url('assets/work/sculpture-1.jpg')">
+          <img src="assets/work/sculpture-1.jpg" alt="A hand-built clay rendition of the Dancing Girl of Mohenjo-daro — a standing figure with one hand set on her hip and the opposite arm stacked with bangles, held upright in an open palm" width="524" height="800" loading="lazy" decoding="async">
         </div>
         <div class="work-body">
           <p class="work-cat">Sculptures</p>
