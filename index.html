@@ -654,6 +654,59 @@
     margin:0 0 28px 0;
   }
 
+  /* a beat in the middle of the read — quieter than the lead, no rule */
+  .why-copy .why-turn{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.15rem, 1.9vw, 1.4rem);
+    line-height:1.45;
+    color:var(--violet-lite);
+    margin:30px 0;
+  }
+
+  /* the small resolutions, lifted out of the prose onto their own panel */
+  .why-list{
+    list-style:none;
+    margin:32px 0;
+    padding:clamp(22px, 3vw, 30px);
+    display:grid;
+    gap:13px;
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:var(--gloss), var(--panel);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--edge), 0 18px 40px -30px rgba(0,0,0,0.7);
+  }
+  .why-list li{
+    position:relative;
+    padding-left:32px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.02rem, 1.5vw, 1.18rem);
+    line-height:1.5;
+    color:var(--text);
+  }
+  .why-list li::before{
+    content:"º6";
+    position:absolute;
+    left:2px; top:0.12em;
+    font-style:normal;
+    font-size:0.78em;
+    color:var(--gold);
+  }
+
+  .why-copy .why-close{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.2rem, 2.1vw, 1.55rem);
+    line-height:1.5;
+    color:var(--violet-lite);
+    border-left:3px solid var(--pink);
+    padding-left:22px;
+    margin:34px 0 0 0;
+  }
+
   /* ---------- PHILOSOPHY ---------- */
   .belief{
     position:relative;
@@ -1074,17 +1127,36 @@
       <p class="eyebrow">Why this site</p>
       <div>
         <h2>To tell stories, meet people, and keep learning.</h2>
-        <p>Five reasons, really — and one of them is that I still expect to be argued out of something.</p>
+        <p>Why any of this exists — and why I would rather have a few honest conversations than a thousand shallow ones.</p>
       </div>
     </div>
     <div class="why-copy">
       <p class="why-lead">We have never been more connected, and I have never seen so many people this alone.</p>
-      <p>Social media has spread into almost every hour of the day. I watch people lose their footing in it — performing a life rather than living one, comparing themselves with strangers, and becoming quietly lonely in a crowd of thousands. I would rather have fewer conversations, and slower, more honest ones. That is much of what this site is for: to tell stories, to put the work somewhere it can be found, to meet people properly, to share what little I know, and to keep learning from anyone willing to question or disagree with me.</p>
-      <p>I am Indian, and I say that without pretending that everything about India is something to be proud of. I don’t believe in defending things simply because they belong to us. We worship rivers and have made some of them among the most polluted in the world. We call our institutions sacred while corruption runs through them. We hold on to rigid practices long after we have forgotten why they began. We can be deeply generous and deeply contradictory at the same time.</p>
-      <p>I am no exception. I have been wrong. I have had opinions that changed when I listened, learned, or simply looked more closely. I would rather admit that than pretend to have all the answers.</p>
-      <p>And many of us leave India, do well abroad, and continue to say we love the country from a safe distance. I include myself in that. I am writing this from Manchester.</p>
-      <p>None of this is meant to run India down. Quite the opposite. You question what you belong to because you care about it. For me, being Indian does not mean refusing to see what is wrong. It means being honest enough to see it, humble enough to learn, and willing to listen when someone tells you that you are wrong.</p>
-      <p>That, too, is a form of belonging.</p>
+      <p>Social media has spread into almost every hour of the day. I watch people lose their footing in it — performing a life rather than living one, comparing themselves with strangers, and becoming quietly lonely in a crowd of thousands. I would rather have fewer conversations, and slower, more honest ones.</p>
+      <p>That is much of what this site is for: to tell stories, to put the work somewhere it can be found, to meet people properly, to share what little I know, and to keep learning from anyone willing to question or disagree with me.</p>
+      <p>I sometimes think about how little time we actually have.</p>
+      <p>We arrive in this world without choosing where, when, or into what circumstances we are born. Some of us begin with abundance, others with almost nothing. Some grow up surrounded by love, others without even knowing what it is to have a parent beside them. None of us chose any of it. We simply arrive — different circumstances, different bodies, different minds, different chances — and begin trying to make sense of it all.</p>
+      <p class="why-turn">And just when we begin to understand a little, time has already begun to run out.</p>
+      <p>Perhaps that is one of the strangest things about being human. We spend so much of our finite time worrying about things that may not matter in the end. We live with fear, uncertainty, anger, greed, jealousy, lust, pride, insecurity and countless other emotions that can quietly consume years of a life. We chase approval, possessions, status, certainty and the imagined lives of other people.</p>
+      <p>Then, sometimes, much later, we realise how little of it was worth losing ourselves for.</p>
+      <p>I don’t pretend to have figured life out. Far from it. I have been wrong, many times. I have held opinions that changed when I listened more carefully, learned something new, or simply looked at the world from another person’s point of view. I expect that will continue to happen.</p>
+      <p>But I wonder why we cannot spend more of the time we are given cultivating the things that make life feel worth living — compassion, curiosity, humility, kindness, friendship, wonder, patience and peace.</p>
+      <p>Perhaps a good life is not necessarily an extraordinary one. Perhaps it is simply a life in which we remain awake to the fact that it is happening.</p>
+      <ul class="why-list">
+        <li>To notice another person.</li>
+        <li>To listen before judging.</li>
+        <li>To be kind when there is no reward for it.</li>
+        <li>To change our minds when we discover we were wrong.</li>
+        <li>To be curious instead of certain.</li>
+        <li>To make something rather than merely consume.</li>
+        <li>To have a few honest conversations instead of thousands of shallow ones.</li>
+        <li>To leave some small part of the world better than we found it.</li>
+      </ul>
+      <p>This site is my attempt to do some of that.</p>
+      <p>I am here to put my work, stories, thoughts, conversations, questions, realisations and revelations somewhere they can exist beyond the fleeting pace of everyday life. Some of them may be useful. Some may be foolish. Some may contradict things I have written before. I am comfortable with that.</p>
+      <p>I don’t want this to be a place where I present myself as someone who has answers. I would rather make it a record of someone trying to understand — life, people, work, society, himself, and the strange privilege of being here for a short while.</p>
+      <p>If something I write makes you think, disagree, laugh, question something you believed, or simply feel a little less alone, then it has served its purpose.</p>
+      <p class="why-close">We are all here for a finite time.<br>Perhaps we should spend a little more of it actually living.</p>
     </div>
   </div>
 </section>
