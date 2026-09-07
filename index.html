@@ -136,6 +136,8 @@
   /* ---------- PILL EYEBROW ---------- */
   .eyebrow{
     display:inline-flex;
+    flex-wrap:wrap;
+    max-width:100%;
     align-items:center;
     gap:9px;
     margin:0;
@@ -935,7 +937,7 @@
     .hero-roles{ white-space:normal; font-size:0.82rem; line-height:1.75; }
   }
   @media (max-width: 480px){
-    .eyebrow{ font-size:0.7rem; padding:7px 14px; gap:7px; }
+    .eyebrow{ font-size:0.7rem; padding:7px 14px; gap:7px; border-radius:16px; }
     .hero .eyebrow{ margin-bottom:16px; }
     .practice-grid{ grid-template-columns:1fr; }
     .work-grid{ grid-template-columns:1fr; }
