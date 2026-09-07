@@ -23,12 +23,13 @@
 <meta name="twitter:title" content="Amaresh Nayak — Jollymynah">
 <meta name="twitter:description" content="Amaresh Nayak — engineer, teacher, and storyteller. From Jajpur, Odisha; based in Manchester, UK. Creative work — stories, paintings, sculptures, prints, and music — alongside teaching, mentoring, and questions worth asking.">
 <meta name="twitter:image" content="https://jollymynah.com/assets/og-cover.jpg">
-<link rel="icon" href="assets/painting.jpg">
-<link rel="apple-touch-icon" href="assets/painting.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#2a0b3d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     /* ---- purple / magenta theme ---- */
@@ -64,7 +65,6 @@
 
     --serif: "Playfair Display", Georgia, "Times New Roman", serif;
     --sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --mono: var(--sans);
   }
 
   *{box-sizing:border-box;}
@@ -106,7 +106,7 @@
   }
   ::-webkit-scrollbar-thumb:hover{ background:linear-gradient(180deg, var(--violet-lite), var(--pink-lite)); }
 
-  img{max-width:100%; display:block;}
+  img{max-width:100%; height:auto; display:block;}
   a{color:inherit;}
   ::selection{ background:rgba(236,72,153,0.35); color:#fff; }
 
@@ -170,7 +170,6 @@
   h1,h2,h3{
     font-family:var(--serif);
     font-weight:600;
-    letter-spacing:-0.015em;
     text-wrap:balance;
     margin:0;
     letter-spacing:-0.01em;
@@ -537,7 +536,7 @@
   .work-grid:empty{ display:none; }
 
   /* author display beats the UA [hidden] rule, so restate it */
-  .work-card[hidden], .work-empty[hidden]{ display:none; }
+  .work-card[hidden], .work-empty[hidden], .chip[hidden]{ display:none; }
   .work-card{
     display:flex; flex-direction:column;
     border-radius:20px;
@@ -1001,7 +1000,7 @@
 
       <article class="work-card" data-category="paintings">
         <div class="work-media">
-          <img src="assets/work/painting-1.jpg" alt="A watercolour of two gulls standing on wet orange sand, with a band of green-blue sea and a pale sky behind them" width="1600" height="1132" loading="lazy" decoding="async">
+          <img src="assets/work/painting-1.jpg" alt="A watercolour of two gulls standing on wet orange sand, with a band of green-blue sea and a pale sky behind them" width="800" height="566" loading="lazy" decoding="async">
         </div>
         <div class="work-body">
           <p class="work-cat">Paintings</p>
@@ -1012,7 +1011,7 @@
 
       <article class="work-card" data-category="sculptures">
         <div class="work-media upright">
-          <img src="assets/work/sculpture-1.jpg" alt="A hand-built clay rendition of the Dancing Girl of Mohenjo-daro — a standing figure with one hand set on her hip and the opposite arm stacked with bangles, held upright in an open palm" width="1200" height="1600" loading="lazy" decoding="async">
+          <img src="assets/work/sculpture-1.jpg" alt="A hand-built clay rendition of the Dancing Girl of Mohenjo-daro — a standing figure with one hand set on her hip and the opposite arm stacked with bangles, held upright in an open palm" width="600" height="800" loading="lazy" decoding="async">
         </div>
         <div class="work-body">
           <p class="work-cat">Sculptures</p>
@@ -1267,6 +1266,19 @@
         apply(this.getAttribute('data-filter'));
       });
     }
+
+    /* a category with no work yet leads nowhere — hide its chip until it has some */
+    (function(){
+      var cards = grid.querySelectorAll('.work-card');
+      var present = {};
+      for(var i = 0; i < cards.length; i++){
+        present[cards[i].getAttribute('data-category')] = true;
+      }
+      for(var k = 0; k < chips.length; k++){
+        var f = chips[k].getAttribute('data-filter');
+        chips[k].hidden = f !== 'all' && !present[f];
+      }
+    })();
 
     apply('all');
   })();
