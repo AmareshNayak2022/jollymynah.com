@@ -558,6 +558,8 @@
     background:linear-gradient(135deg, rgba(168,85,247,0.22), rgba(236,72,153,0.16));
   }
   .work-media img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+  /* upright shots sit whole inside the frame instead of being cropped to it */
+  .work-media.upright img{ object-fit:contain; }
   .work-card:hover .work-media img{ transform:scale(1.06); }
   .work-body{ padding:22px; display:flex; flex-direction:column; gap:8px; }
   .work-cat{
@@ -977,7 +979,7 @@
       <button class="chip" type="button" data-filter="music" aria-pressed="false">Music</button>
     </div>
 
-    <!-- Work goes here. One card per piece; data-category must match a chip's
+    <!-- One card per piece; data-category must match a chip's
          data-filter (stories | paintings | sculptures | prints | music):
 
          <article class="work-card" data-category="sculptures">
@@ -991,8 +993,35 @@
            </div>
          </article>
 
+         Add class "upright" to .work-media when the photo is portrait, so the
+         piece is fitted whole into the frame rather than cropped to it.
+
          The filters and the empty message handle themselves. -->
-    <div class="work-grid" id="workGrid"></div>
+    <div class="work-grid" id="workGrid">
+
+      <article class="work-card" data-category="paintings">
+        <div class="work-media">
+          <img src="assets/work/painting-1.jpg" alt="A watercolour of two gulls standing on wet orange sand, with a band of green-blue sea and a pale sky behind them" width="1600" height="1132" loading="lazy" decoding="async">
+        </div>
+        <div class="work-body">
+          <p class="work-cat">Paintings</p>
+          <h3>Two Gulls on the Shore</h3>
+          <p>Watercolour on paper. Two gulls holding their patch of wet sand, with the sea flattening out behind them.</p>
+        </div>
+      </article>
+
+      <article class="work-card" data-category="sculptures">
+        <div class="work-media upright">
+          <img src="assets/work/sculpture-1.jpg" alt="A small white clay figure of a standing woman, one hand on her hip, held upright in an open palm" width="1200" height="1600" loading="lazy" decoding="async">
+        </div>
+        <div class="work-body">
+          <p class="work-cat">Sculptures</p>
+          <h3>Standing Figure</h3>
+          <p>A white clay figure, built by hand and small enough to stand in one palm.</p>
+        </div>
+      </article>
+
+    </div>
 
     <p class="work-empty" id="workEmpty">Nothing here yet — new work is on its way.</p>
   </div>
