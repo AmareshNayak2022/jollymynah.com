@@ -536,7 +536,7 @@
   .work-grid:empty{ display:none; }
 
   /* author display beats the UA [hidden] rule, so restate it */
-  .work-card[hidden], .work-empty[hidden], .chip[hidden]{ display:none; }
+  .work-card[hidden], .work-empty[hidden]{ display:none; }
   .work-card{
     display:flex; flex-direction:column;
     border-radius:20px;
@@ -1255,7 +1255,7 @@
       empty.hidden = shown > 0;
       empty.textContent = cards.length === 0
         ? 'Nothing here yet — new work is on its way.'
-        : 'Nothing in this category yet.';
+        : 'Nothing in this category yet — more is on its way.';
     }
 
     for(var i = 0; i < chips.length; i++){
@@ -1266,19 +1266,6 @@
         apply(this.getAttribute('data-filter'));
       });
     }
-
-    /* a category with no work yet leads nowhere — hide its chip until it has some */
-    (function(){
-      var cards = grid.querySelectorAll('.work-card');
-      var present = {};
-      for(var i = 0; i < cards.length; i++){
-        present[cards[i].getAttribute('data-category')] = true;
-      }
-      for(var k = 0; k < chips.length; k++){
-        var f = chips[k].getAttribute('data-filter');
-        chips[k].hidden = f !== 'all' && !present[f];
-      }
-    })();
 
     apply('all');
   })();
